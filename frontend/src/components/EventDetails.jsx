@@ -33,12 +33,11 @@ const EventDetails = ({ event }) => {
       <p><strong>Hours: </strong>{event.hours}</p>
       <p><strong>load: </strong>{event.load}</p>
       <p>{formatDistanceToNow(new Date(event.createdAt), { addsuffix: true})}</p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-
-
+      {user && user.role === "organizer" && (
+        <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+      )}
     </div>
   )
-
 }
 
 export default EventDetails
