@@ -29,6 +29,21 @@ const getEvent = async (req, res) => {
 const createEvent = async(req, res) => {
   const {title, load, hours} = req.body
 
+  let emptyFields = []
+
+  if (!title) {
+    emptyFields.push('title')
+  }
+  if (!load) {
+    emptyFields.push('load')
+  }
+  if (!hours) {
+    emptyFields.push('hours')
+  }
+  if (emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+  }
+
   // add a doc to db
   try {
     const event = await Event.create({title, load, hours})
