@@ -1,42 +1,36 @@
-const User = require('../models/userModel');
-const jwt = require('jsonwebtoken');
 
-// Function to create a JWT
-const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '2d' });
+const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
+
+const createToken = (_id, role) => {
+  return jwt.sign({ _id, role }, process.env.SECRET, { expiresIn: "2d" });
 };
 
-// Login user
-const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+const signupUser = async (req, res) => {
+  const { email, password, role } = req.body;
 
   try {
-    // Create a new user
-    const user = await User.login(email, password);
+    if (!["organizer", "volunteer"].includes(role)) {
+      throw new Error("Invalid role");
+    }
 
-    // Create a token for the user
-    const token = createToken(user._id);
+    const user = await User.signup(email, password, role);
+    const token = createToken(user._id, user.role);
 
-    // Respond with email and token
-    res.status(200).json({ email, token });
+    res.status(200).json({ email, token, role: user.role });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-// Signup user
-const signupUser = async (req, res) => {
-  const { email, password, role } = req.body;
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
 
   try {
-    // Create a new user
-    const user = await User.signup(email, password, role);
+    const user = await User.login(email, password);
+    const token = createToken(user._id, user.role);
 
-    // Create a token for the user
-    const token = createToken(user._id);
-
-    // Respond with email, token, and role
-    res.status(200).json({ email, token, isOrganizer: role === 'organizer' });
+    res.status(200).json({ email, token, role: user.role });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
