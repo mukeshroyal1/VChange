@@ -207,3 +207,38 @@ form.login {
 .dropdown button:hover {
   background-color: #f1f1f1;
 }
+
+/* role selection */
+.role-selection {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.role-selection label {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  background: #f9f9f9;
+  border-right: 1px solid #ddd;
+  font-size: 1em;
+}
+
+.role-selection label:last-child {
+  border-right: none;
+}
+
+.role-selection input {
+  display: none;
+}
+
+.role-selection input:checked + label {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border: 2px solid var(--primary);
+}
