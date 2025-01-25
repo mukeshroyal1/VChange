@@ -9,32 +9,47 @@ const EventForm = () => {
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const event = { title, load, hours };
-
-        const response = await fetch("/api/events", {
-            method: "POST",
-            body: JSON.stringify(event),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        const json = await response.json();
-
-        if (!response.ok) {
-            setError(json.error);
-        }
-        if (response.ok) {
-            setTitle("");
-            setLoad("");
-            setHours("");
-            setError(null);
-            console.log("new event added", json);
-            dispatch({ type: "CREATE_EVENT", payload: json });
-        }
-    };
+      e.preventDefault();
+  
+      const event = { title, load, hours };
+  
+      try {
+          const response = await fetch("/api/events", {
+              method: "POST",
+              body: JSON.stringify(event),
+              headers: {
+                  "Content-Type": "application/json",
+              },
+          });
+  
+          // Log the response to check its content
+          console.log("Response:", response);
+  
+          if (!response.ok) {
+              const errorData = await response.json();
+              setError(errorData.error || "Something went wrong");
+              return;
+          }
+  
+          const json = await response.json();
+  
+          // Handle case for empty or malformed JSON response
+          if (!json) {
+              setError("No response data returned");
+              return;
+          }
+  
+          setTitle("");
+          setLoad("");
+          setHours("");
+          setError(null);
+          console.log("New event added:", json);
+          dispatch({ type: "CREATE_EVENT", payload: json });
+      } catch (err) {
+          setError("An error occurred. Please try again.");
+          console.error("Submit Error:", err);
+      }
+  };  
 
     return (
         <form className="create" onSubmit={handleSubmit}>
