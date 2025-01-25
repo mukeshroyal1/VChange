@@ -1,15 +1,15 @@
 require('dotenv').config()
 
 const express = require('express')
-const cors = require('cors')
-const eventRoutes = require('./routes/events')
 const mongoose = require('mongoose')
+const eventRoutes = require('./routes/events')
+const userRoutes = require('./routes/user')
 
 // express app
 const app = express()
 
+
 // global middleware 
-app.use(cors()) // Allow cross-origin requests
 app.use(express.json())
 app.use((req, res, next) => {
   console.log(req.path, req.method)
@@ -19,6 +19,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/events', eventRoutes)
+app.use('/api/user', userRoutes)
 
 //connect to db
 

@@ -7,7 +7,13 @@ const {
   updateEvent
 } = require('../controllers/eventController')
 
+const requireAuth = require('../middleware/requireAuth')
+
+
 const router = express.Router()
+
+// this will require auth for all workout routes
+router.use(requireAuth)
 
 // This is to get all events
 router.get('/', getEvents)
