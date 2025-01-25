@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import Leaderboard from "./pages/Leaderboard.jsx";
 import Events from "./pages/Events.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
     return (

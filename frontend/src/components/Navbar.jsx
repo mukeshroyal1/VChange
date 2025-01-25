@@ -3,22 +3,41 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
-            <div className="container">
-                <Link to="/" className="logo">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div className="container-fluid">
+                <Link to="/" className="navbar-brand">
                     VChange
                 </Link>
-                <ul className="nav-links">
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/leaderboard">Leaderboard</Link>
-                    </li>
-                    <li>
-                        <Link to="/events">Events</Link>
-                    </li>
-                </ul>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link">
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/leaderboard" className="nav-link">
+                                Leaderboard
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/events" className="nav-link">
+                                Events
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     );
