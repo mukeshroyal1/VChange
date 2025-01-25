@@ -1,43 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const handleSignOut = () => {
+        setIsLoggedIn(false);
+        alert("Signed out!");
+    };
+
+    const handleLogin = () => {
+        setIsLoggedIn(true);
+        alert("Logged in!");
+    };
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container">
                 <Link to="/" className="navbar-brand">
                     VChange
                 </Link>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/leaderboard" className="nav-link">
-                                Leaderboard
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/events" className="nav-link">
-                                Events
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link to="/" className="nav-link">
+                            Home
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/leaderboard" className="nav-link">
+                            Leaderboard
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/events" className="nav-link">
+                            Events
+                        </Link>
+                    </li>
+
+                    <li className="nav-item dropdown">
+                        <a
+                            className="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <FaUserCircle size={30} />
+                        </a>
+                        <ul
+                            className="dropdown-menu"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            {isLoggedIn ? (
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/profile"
+                                            className="dropdown-item"
+                                        >
+                                            Personal Stats
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/settings"
+                                            className="dropdown-item"
+                                        >
+                                            Account Settings
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="#"
+                                            onClick={handleSignOut}
+                                            className="dropdown-item"
+                                        >
+                                            Sign Out
+                                        </a>
+                                    </li>
+                                </>
+                            ) : (
+                                <li>
+                                    <a
+                                        href="#"
+                                        onClick={handleLogin}
+                                        className="dropdown-item"
+                                    >
+                                        Log In
+                                    </a>
+                                </li>
+                            )}
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </nav>
     );
