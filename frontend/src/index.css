@@ -314,3 +314,129 @@ form.login {
 .delete-icon:hover {
   background: #e0e0e0;
 }
+
+.cta-home {
+  font-family: "Poppins";
+}
+
+.cta-header {
+  text-align: center;
+  padding: 50px 20px;
+  background: var(--primary);
+  color: #fff;
+}
+
+.cta-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.cta-header p {
+  margin: 20px 0;
+  font-size: 1.2em;
+}
+
+.cta-button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #f1f1f1;
+}
+
+.cta-stats {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta-stats h2 {
+  margin-bottom: 40px;
+  font-size: 2em;
+}
+
+.cta-stats-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cta-stat {
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.cta-stat h3 {
+  margin: 0;
+  font-size: 2em;
+  color: var(--primary);
+}
+
+.cta-testimonials {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f9f9f9;
+}
+
+.cta-testimonials h2 {
+  margin-bottom: 40px;
+  font-size: 2em;
+}
+
+.cta-testimonials-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cta-testimonial {
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 45%;
+}
+
+.cta-testimonial p {
+  font-size: 1em;
+  color: #555;
+}
+
+.cta-testimonial h4 {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+
+.cta-recent-events {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta-recent-events h2 {
+  margin-bottom: 40px;
+  font-size: 2em;
+}
+
+.cta-events-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.cta-get-involved {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f9f9f9;
+}
+
+.cta-get-involved h2 {
+  margin-bottom: 40px;
+  font-size: 2em;
+}
