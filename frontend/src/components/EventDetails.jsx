@@ -2,6 +2,7 @@ import { useEventsContext } from '../hooks/useEventsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 // to make the date appear (we used date fns)
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { FaRegTrashAlt } from 'react-icons/fa'
 
 const EventDetails = ({ event }) => {
   const { dispatch } = useEventsContext()
@@ -31,10 +32,12 @@ const EventDetails = ({ event }) => {
     <div className="event-details">
       <h4>{event.title}</h4>
       <p><strong>Hours: </strong>{event.hours}</p>
-      <p><strong>load: </strong>{event.load}</p>
-      <p>{formatDistanceToNow(new Date(event.createdAt), { addsuffix: true})}</p>
+      <p><strong>Load: </strong>{event.load}</p>
+      <p>{formatDistanceToNow(new Date(event.createdAt), { addsuffix: true}) + " ago"}</p>
       {user && user.role === "organizer" && (
-        <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+        <span className="delete-icon" onClick={handleClick}>
+          <FaRegTrashAlt />
+        </span>
       )}
     </div>
   )

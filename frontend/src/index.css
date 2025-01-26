@@ -296,3 +296,21 @@ form.login {
   font-size: 1.5em;
   font-weight: bold;
 }
+
+.delete-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 50%;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-icon:hover {
+  background: #e0e0e0;
+}
