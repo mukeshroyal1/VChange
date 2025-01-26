@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useEventsContext } from "../hooks/useEventsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
-
-// components 
+import { FaUsers, FaCalendarAlt, FaHeart } from 'react-icons/fa';
 import EventDetails from '../components/EventDetails';
 import EventForm from '../components/EventForm';
+import SignUp from '../pages/Signup';
 
 const Home = () => {
   const { events, dispatch } = useEventsContext();
   const { user } = useAuthContext();
+  const getInvolvedRef = useRef(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -29,26 +30,33 @@ const Home = () => {
     }
   }, [dispatch, user]);
 
+  const scrollToGetInvolved = () => {
+    getInvolvedRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="cta-home">
       <header className="cta-header">
         <h1>Welcome to Our Initiative</h1>
         <p>Join us in making a difference in Kingston.</p>
-        <button className="cta-button">Get Involved</button>
+        <button className="cta-button" onClick={scrollToGetInvolved}>Get Involved</button>
       </header>
 
       <section className="cta-stats">
         <h2>Our Impact</h2>
         <div className="cta-stats-grid">
           <div className="cta-stat">
+            <FaUsers className="cta-icon" />
             <h3>500+</h3>
             <p>Volunteers</p>
           </div>
           <div className="cta-stat">
+            <FaCalendarAlt className="cta-icon" />
             <h3>1000+</h3>
             <p>Events Organized</p>
           </div>
           <div className="cta-stat">
+            <FaHeart className="cta-icon" />
             <h3>10,000+</h3>
             <p>Lives Impacted</p>
           </div>
@@ -78,9 +86,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="cta-get-involved">
+      <section className="cta-get-involved" ref={getInvolvedRef}>
         <h2>Get Involved</h2>
-        <EventForm />
+        <button className="cta-button" onClick={() => <SignUp />}>Sign Up</button>
       </section>
     </div>
   );
