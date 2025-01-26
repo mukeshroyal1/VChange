@@ -53,7 +53,7 @@ const EventForm = () => {
             bottom: "20px",
             right: "20px",
             padding: "10px 20px",
-            backgroundColor: "#007BFF",
+            backgroundColor: "var(--primary)",
             color: "#fff",
             border: "none",
             borderRadius: "50px",

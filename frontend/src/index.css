@@ -8,13 +8,14 @@
 }
 
 body {
-  background: #f1f1f1;
+  background: #e0f7e9;
   margin: 0;
   font-family: "Poppins";
 }
 
 header {
-  background: #fff;
+  background: #c8e5c9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 header .container {
@@ -44,6 +45,7 @@ header a {
 }
 
 .event-details {
+  background: #fff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
