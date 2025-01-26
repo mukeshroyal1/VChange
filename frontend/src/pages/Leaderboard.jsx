@@ -34,8 +34,16 @@ const Leaderboard = () => {
   return (
     <div className="leaderboard">
       <h2>Leaderboard</h2>
+      <div className="podium">
+        {sortedEvents.slice(0, 3).map((event, index) => (
+          <div key={event._id} className={`podium-item podium-${index + 1}`}>
+            <span className="podium-rank">{index + 1}</span>
+            <EventDetails event={event} />
+          </div>
+        ))}
+      </div>
       <div className="events">
-        {sortedEvents && sortedEvents.map((event) => (
+        {sortedEvents.slice(3).map((event) => (
           <EventDetails key={event._id} event={event} />
         ))}
       </div>
