@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Leaderboard from './pages/Leaderboard'
+import Events from './pages/Events'
 
 function App() {
   const { user } = useAuthContext()
@@ -22,6 +23,10 @@ function App() {
             <Route
               path="/leaderboard"
               element={<Leaderboard />}
+            />
+            <Route
+              path="/events"
+              element={<Events />}
             />
             <Route
               path="/login"
