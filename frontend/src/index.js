@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './frontend/src/index.css';
-import App from './frontend/src/App';
-import { EventsContextProvider} from './frontend/src/context/EventContext'
-import { AuthContextProvider} from './frontend/src/context/AuthContext'
+import './index.css';
+import App from './App';
+import { EventsContextProvider} from './context/EventContext'
+import { AuthContextProvider} from './context/AuthContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
