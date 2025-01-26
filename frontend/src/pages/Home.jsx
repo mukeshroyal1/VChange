@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { FaUsers, FaCalendarAlt, FaHeart } from 'react-icons/fa';
 import EventDetails from '../components/EventDetails';
 import EventForm from '../components/EventForm';
-import SignUp from './Signup';
+import SignUp from '../pages/Signup';
 
 const Home = () => {
   const { events, dispatch } = useEventsContext();

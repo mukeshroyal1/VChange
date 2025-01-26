@@ -1,4 +1,4 @@
-const Event = require('../backend/models/EventModel')
+const Event = require('../models/EventModel')
 const mongoose = require('mongoose')
 
 // get all events
